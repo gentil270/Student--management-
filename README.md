@@ -1,29 +1,48 @@
-# Welcome to your Lovable project
+# EAV Kivumu Student Management System
 
-This project was built with [Lovable](https://lovable.dev).
+**Live site (open this to use the system):** https://gentil270.github.io/Student--management-/
 
-## Build with Lovable
+A student records system for EAV Kivumu: register students, browse the list,
+search as you type, open a student's details, and delete a record.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Features
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+| # | Feature | How it works |
+|---|---------|--------------|
+| 1 | Register students | Registration form with validation |
+| 2 | Display students | Dynamic list rendered with `map()` |
+| 3 | Search students | Debounced search (400 ms) across name, reg no, email, course |
+| 4 | Delete students | Delete button with confirmation |
+| 5 | View registration form | Show / hide the form |
+| 6 | Keyboard shortcuts | `Ctrl+K` search, `Ctrl+N` new student, `Esc` close |
+| 7 | View student details | Details dialog |
+| 8 | Nested clicks | Event bubbling with `stopPropagation()` |
+| 9 | Prevent repeated actions | Submission protection + duplicate reg-no / email checks |
 
-## Development
+## React concepts demonstrated
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- Controlled components
+- Dynamic lists and `map()`
+- Debouncing
+- Event handling and `filter()`
+- Form events
+- Custom Hooks (`useDebounce`, `useKeyboardShortcuts`, `useStudents`)
+- Passing arguments to handlers
+- Event bubbling
+
+## Running it locally
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
 
-## Built with
+The app reads and writes student records through a hosted database, so the
+sample records and anything you register are shared by everyone using the site.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Repository layout
+
+- `src/` — the application (React + TanStack Start, Tailwind CSS)
+- `src/routes/index.tsx` — the whole screen: form, list, search, details dialog
+- `src/hooks/use-students.ts` — the three custom hooks
+- `gh-pages` branch — the built copy that GitHub Pages serves
